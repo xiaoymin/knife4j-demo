@@ -10,4 +10,6 @@
 相关issues：
 
 - [添加SpringSecurity登录接口到knife4j中](https://gitee.com/xiaoym/knife4j/issues/I640E8)
-- 
+
+
+文章： [https://doc.xiaominfo.com/docs/blog/customer-add-api](https://doc.xiaominfo.com/docs/blog/customer-add-api)
