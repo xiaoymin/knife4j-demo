@@ -1,3 +1,20 @@
+/*
+ * Copyright © 2017-2023 Knife4j(xiaoymin@foxmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package com.xiaominfo.springfox.customer;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,19 +42,20 @@ import java.util.*;
 @Slf4j
 @Component
 public class CustomerApiPlugin implements ApiListingScannerPlugin {
+    
     @Override
     public List<ApiDescription> apply(DocumentationContext context) {
         // consumers、produces
-        Set<String> mediaSet=new HashSet<>();
+        Set<String> mediaSet = new HashSet<>();
         mediaSet.add(MediaType.APPLICATION_JSON_VALUE);
-        //设定参数
-        List<Parameter> parameters=new ArrayList<>();
+        // 设定参数
+        List<Parameter> parameters = new ArrayList<>();
         parameters.add(new ParameterBuilder().name("username").required(true).modelRef(new ModelRef("String")).defaultValue("test").description("用户名").build());
         parameters.add(new ParameterBuilder().name("password").required(true).modelRef(new ModelRef("String")).defaultValue("123").description("密码").build());
         // 接口的Tag
-        Set<String> tags=new HashSet<>();
+        Set<String> tags = new HashSet<>();
         tags.add("首页");
-        //构建Operation对象
+        // 构建Operation对象
         Operation usernamePasswordOperation = new OperationBuilder(new CachingOperationNameGenerator())
                 .method(HttpMethod.POST)
                 .tags(tags)
@@ -47,14 +65,14 @@ public class CustomerApiPlugin implements ApiListingScannerPlugin {
                 .consumes(mediaSet)
                 .produces(mediaSet)
                 .build();
-
-        //需要注意的是groupName需要和开发者创建的Docket对象赋值的groupName保持一致
+        
+        // 需要注意的是groupName需要和开发者创建的Docket对象赋值的groupName保持一致
         ApiDescription loginApiDescription = new ApiDescription("hello", "/login", "登录接口描述", Collections.singletonList(usernamePasswordOperation), false);
         return Collections.singletonList(loginApiDescription);
     }
-
+    
     @Override
     public boolean supports(DocumentationType documentationType) {
-        return documentationType==DocumentationType.SWAGGER_2;
+        return documentationType == DocumentationType.SWAGGER_2;
     }
 }

@@ -10,6 +10,7 @@
 
   <modules>
     <module>knife4j-customer-springfox</module>
+    <module>knife4j-customer-springdoc</module>
   </modules>
 
   <properties>
