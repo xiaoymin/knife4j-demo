@@ -11,6 +11,7 @@
   <modules>
     <module>knife4j-forbidden-conditional</module>
     <module>knife4j-forbidden-filter</module>
+    <module>knife4j-forbidden-maven-jar</module>
   </modules>
 
   <properties>

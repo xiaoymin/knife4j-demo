@@ -15,7 +15,7 @@
  */
 
 
-package com.xiaominfo.springdoc;
+package com.xiaominfo.springfox;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -28,11 +28,11 @@ import java.net.InetAddress;
 
 @Slf4j
 @SpringBootApplication
-public class Knife4jCustomerSpringdocApplication {
+public class Knife4jForbiddenConditionalApplication {
     
     @SneakyThrows
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(Knife4jCustomerSpringdocApplication.class);
+        SpringApplication app = new SpringApplication(Knife4jForbiddenConditionalApplication.class);
         ConfigurableApplicationContext application = app.run(args);
         // ConfigurableApplicationContext application=SpringApplication.run(Knife4jSpringBootDemoApplication.class, args);
         Environment env = application.getEnvironment();
@@ -49,5 +49,4 @@ public class Knife4jCustomerSpringdocApplication {
                 InetAddress.getLocalHost().getHostAddress(),
                 env.getProperty("server.port"));
     }
-    
 }

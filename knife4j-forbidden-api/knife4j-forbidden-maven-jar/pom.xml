@@ -8,12 +8,51 @@
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>knife4j-forbidden-filter</artifactId>
-    <name>knife4j-forbidden-filter</name>
-    <description>knife4j-forbidden-filter</description>
+    <artifactId>knife4j-forbidden-maven-jar</artifactId>
+    <name>knife4j-forbidden-maven-jar</name>
+    <description>knife4j-forbidden-maven-jar</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!-- 激活条件为"dev"系统属性存在 -->
+                <property>
+                    <name>env</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <!-- 激活条件为"prod"环境变量存在 -->
+                <property>
+                    <name>env</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.github.xiaoymin</groupId>
+                    <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>com.github.xiaoymin</groupId>
+                            <artifactId>knife4j-openapi3-ui</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.webjars</groupId>
+                            <artifactId>swagger-ui</artifactId>
+                        </exclusion>
+                    </exclusions>
+
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,8 +81,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.13</version>
                 <configuration>
-                    <mainClass>com.xiaominfo.springdoc.Knife4jForbiddenFilterApplication</mainClass>
+                    <mainClass>com.xiaominfo.springdoc.Knife4jForbiddenMavenJarApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

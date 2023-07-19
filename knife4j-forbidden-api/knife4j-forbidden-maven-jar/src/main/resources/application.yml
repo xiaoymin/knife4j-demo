@@ -15,6 +15,3 @@ springdoc:
 spring:
   application:
     name: knife4j-customer-sringdoc
-knife4j:
-  enable: true
-  production: true
