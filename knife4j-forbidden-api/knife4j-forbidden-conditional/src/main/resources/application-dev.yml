@@ -1,0 +1,14 @@
+knife4j:
+  enable: true
+  openapi:
+    email: xiaoymin@foxmail.com
+    url: https://doc.xiaominfo.com
+    concat: 八一菜刀
+    license: Apache 2.0
+    group:
+      hello:
+        group-name: 首页
+        path-rule: regex
+        api-rule: package
+        api-rule-resources:
+          - com.xiaominfo.springfox
