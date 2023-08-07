@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: knife4j-handler-enum
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    show-extensions: true
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.xiaominfo.knife4j
+  default-flat-param-object: true
+knife4j:
+  enable: true
+server:
+  port: 19001
